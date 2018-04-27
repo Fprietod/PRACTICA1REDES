@@ -7,7 +7,7 @@ import java.io.*;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 public class UIServidor extends javax.swing.JFrame {
-    private int puerto = 9000;
+    private int puerto = 3000;
     private Socket sc;
     private ServerSocket serversc;
     private DataOutputStream salida;
@@ -29,7 +29,7 @@ public class UIServidor extends javax.swing.JFrame {
             sc = serversc.accept();
             salida = new DataOutputStream(sc.getOutputStream());
             entrada = new BufferedReader(new InputStreamReader(sc.getInputStream()));
-            salida.writeUTF("*****LA CONEXIÓN CON EL CLIENTE SE HA ESTABLECIDO***** \n");
+            salida.writeUTF("*******LA CONEXIÓN CON EL CLIENTE SE HA ESTABLECIDO***** \n");
             textAreaServer.append(entrada.readLine() + "\n");
             textAreaServer.append("-Esperando archivos del cliente... \n"); 
             sc.close();
@@ -211,7 +211,6 @@ public class UIServidor extends javax.swing.JFrame {
             }
         });
 
-        jPuerto.setText("9000");
         jPuerto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPuertoActionPerformed(evt);
@@ -307,9 +306,9 @@ public class UIServidor extends javax.swing.JFrame {
         textAreaServer.setText("");
         try{
             sc.close();
-            textAreaServer.append("Cerrando conexión... \n");
+            textAreaServer.append("Cerrando conexión... terminado \n");
             serversc.close();
-            textAreaServer.append("Conexión cerrada. \n");
+            textAreaServer.append("Conexión cerrada.terminado \n");
            
         }
         /*Mensaje de Error*/
